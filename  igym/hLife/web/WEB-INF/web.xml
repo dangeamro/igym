@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="/WEB-INF/web-app_2_4.xsd" version="2.4">
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>
+			com.designer.common.framework.DesignerServlet
+		</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+				/WEB-INF/struts-config/struts-config.xml,
+				/WEB-INF/struts-config/struts-config-admin.xml,
+				/WEB-INF/struts-config/struts-config-user.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+
+ 	<servlet>
+    	<servlet-name>DisplayChart</servlet-name>
+	    <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DisplayChart</servlet-name>
+		<url-pattern>/servlet/DisplayChart</url-pattern>
+	</servlet-mapping>
+
+
+	<context-param>
+		<param-name>ApplicationPropertiesFileName</param-name>
+		<param-value>ApplicationConfig.properties</param-value>
+	</context-param>
+
+	<welcome-file-list>
+		<welcome-file>jsp/common/Login.jsp</welcome-file>
+	</welcome-file-list>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<!-- Application Security Filter -->
+    <filter>
+        <filter-name>securityFilter</filter-name>
+        <filter-class>com.designer.common.framework.applicationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>*.do</url-pattern>        
+    </filter-mapping>
+	
+	<!-- User Loader Listener -->
+	<listener>
+		<listener-class>com.designer.common.framework.UserLoaderListener</listener-class>
+	</listener>
+	
+</web-app>

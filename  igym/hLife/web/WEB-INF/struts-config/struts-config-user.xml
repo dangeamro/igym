@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+"/WEB-INF/dtd/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="foodJournalForm" type="com.designer.controller.foodJournal.FoodJournalForm"/>
+		
+		<form-bean name="SupplimentTrackerForm" type="com.designer.controller.supplimentTracker.SupplimentTrackerForm"/>
+
+		<form-bean name="heartRateMonitorForm" type="com.designer.controller.heartRateMonitor.HeartRateMonitorForm"/>
+		
+		<form-bean name="statusAndMeasurementForm" type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementForm"/>
+
+		<form-bean name="mailForm" type="com.designer.controller.message.MessageForm"/>
+	
+	</form-beans>
+
+
+	<action-mappings>
+
+		<action path="/user/getWelcomePage"  forward="user.welcome.page" />
+		
+		<action path="/user/getChangePassword"
+			type="com.designer.controller.customer.CustomerAction"
+			name="changePasswordForm" validate="false" forward="user.change.password"/>
+
+		<action path="/user/changePassword"
+			type="com.designer.controller.customer.CustomerAction"
+			input="/user/getChangePassword.do" parameter="method"
+			name="changePasswordForm" validate="true">
+			<forward name="success" path="/user/getWelcomePage.do" redirect="true"/>
+			<forward name="failure" path="/user/getChangePassword.do"/>
+		</action>
+		
+
+		
+		<action path="/user/getCustomerReportCard"
+			type="com.designer.controller.customer.ReportCardAction"
+			parameter="method">
+			<forward name="success" path="user.reportCard.view" />
+			<forward name="failure" path="user.reportCard.view" />			
+		</action>
+		
+
+
+		<action path="/user/getAllMeals" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" parameter="method">
+			<forward name="success" path="user.food.journal.view.all.meals"/>
+		</action>
+	
+		<action path="/user/getUpdateMeal" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" parameter="method">
+			<forward name="success" path="user.food.journal.update.meal"/>
+		</action>
+
+		<action path="/user/updateMeal" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" parameter="method">
+			<forward name="success" path="/user/getAllMeals.do?method=getMeals"></forward>
+		</action>
+
+		<action path="/user/getAddMeal" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			parameter="method">
+			<forward name="success" path="user.food.journal.add" />
+		</action>
+				
+		<!--action path="/user/addMeal" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" input="/user/getAddMeal.do"
+			parameter="method">
+			<forward name="success" path="/user/getAllMeals.do?method=getMeals"></forward>
+		</action -->
+
+		<action path="/user/addMeal"
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" input="/user/getAddMeal.do"
+			parameter="method">
+			<forward name="success" path="/user/getAllMeals.do?method=getMeals" redirect="true"/>
+		</action>
+		
+		<action path="/user/deleteMeal" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" validate="false"
+			parameter="method">
+			<forward name="success" path="/user/getAllMeals.do?method=getMeals" redirect="true"/>
+			<forward name="failure" path="/user/getAllMeals.do?method=getMeals"/>
+		</action>
+		
+		<!--  Status And Measurement @ start -->
+		<action path="/user/getAutoStatusAndMeasurements"
+			type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementAction"
+			name="statusAndMeasurementForm" 
+			parameter="method">
+			<forward name="success" path="user.autoStatusAndMeasurements.view"/>
+		</action>
+		
+		<action path="/user/compareAutoStatusAndMeasurements"
+			type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementAction"
+			name="statusAndMeasurementForm" 
+			parameter="method">
+			<forward name="success" path="user.compareAutoStatusAndMeasurements.view"/>
+		</action>
+		
+
+		<action path="/user/getStatusAndMeasurements"
+			type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementAction"
+			name="statusAndMeasurementForm" 
+			parameter="method">
+			<forward name="success" path="user.statusAndMeasurements.view"></forward>
+		</action>		
+		
+		<!--  Status And Measurement @ end -->
+
+		<!--  Suppliment Tracker @ start -->
+		
+		 <action path="/user/getSupplimentTracker"
+			type="com.designer.controller.supplimentTracker.SupplimentTrackerAction"
+			name="supplimentTrackerForm" 
+			parameter="method">
+			<forward name="success" path="user.supplimentTracker.view"></forward>
+		</action>
+		<!--  Suppliment Tracker @ end -->
+		
+		<!-- User mails	-->
+		<action path="/user/getMails"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="user.mails.inbox"/>
+		</action>
+		
+		<action path="/user/deleteMails"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="/user/getMails.do?method=getInbox" redirect="true" />
+		</action>
+		
+		<action path="/user/deleteSentMails"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="/user/getSentItems.do?method=getSentItems" redirect="true" />
+		</action>
+		
+		<action path="/user/getSentItems"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="user.mails.sentItems"/>
+		</action>
+		
+		<action path="/user/getMailCompose" forward="user.mails.compose"/>
+		
+		<action path="/user/sendMail"
+			type="com.designer.controller.message.MessageAction"
+			name="mailForm" scope="request"
+			input="/user/getMailCompose.do" validate="true"
+			parameter="method">
+			<forward name="success" path="/user/getMails.do?method=getInbox" redirect="true" />
+		</action>
+		
+		<action path="/user/getMail"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="user.mails.mailConversation" />
+		</action>
+		
+		<action path="/user/markUnread"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="/user/getMails.do?method=getInbox" redirect="true" />
+		</action>
+		<!-- End of user mails	-->
+		
+		<!-- Heart rate monitor starts -->
+		<action path="/user/getHeartRateMonitor" 
+			type="com.designer.controller.heartRateMonitor.HeartRateMonitorAction"
+			parameter="method">
+			<forward name="success" path="user.heartRateMonitor.view" />
+			<forward name="failure" path="user.heartRateMonitor.view" />			
+		</action>
+		
+		<action path="/user/compareHeartRateMonitor"
+			type="com.designer.controller.heartRateMonitor.HeartRateMonitorAction"
+			parameter="method">
+			<forward name="success" path="user.heartRateMonitor.comparison"/>
+			<forward name="failure" path="user.heartRateMonitor.view"/>			
+		</action>
+
+		<action path="/user/getAddHeartRateMonitor" forward="user.heartRateMonitor.add" />
+
+		<action path="/user/addHeartRateMonitor"
+			type="com.designer.controller.heartRateMonitor.HeartRateMonitorAction"
+			name="heartRateMonitorForm" input="/user/getAddHeartRateMonitor.do"
+			validate="true" parameter="method">
+			<forward name="success" path="/user/getHeartRateMonitor.do?method=getHeartRateMonitor" />
+		</action>
+		<!-- Heart rate monitor ends -->
+		
+	</action-mappings>
+</struts-config>

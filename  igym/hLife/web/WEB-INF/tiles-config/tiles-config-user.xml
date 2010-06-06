@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"/WEB-INF/dtd/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+	<!-- ########## Menu Definitions start here ########## -->
+	<definition name="user.menu.list" path="/jsp/common/UserMenu.jsp">
+		<putList name="menuList">
+			<item value="menu.Item.report.card" link="/user/getCustomerReportCard.do?method=getReportCard"
+				icon="resources/images/report-card.gif" />
+			<item value="menu.Item.food.journal" link="/user/getAllMeals.do?method=getMeals"
+				icon="resources/images/notebook.gif" />
+			<item value="menu.Item.status.and.measurements" link="/user/getAutoStatusAndMeasurements.do?method=getAutoStatusAndMeasurement"
+				icon="resources/images/measurements.gif" />
+			<item value="menu.Item.supplement.tracker" link="/user/getSupplimentTracker.do?method=getSupplimentTracker"
+				icon="resources/images/beaker.gif" />
+			<item value="menu.Item.heart.rate.monitor" link="/user/getHeartRateMonitor.do?method=getHeartRateMonitor"
+				icon="resources/images/chart.gif" />
+			<item value="menu.Item.mails" link="/user/getMails.do?method=getInbox"
+				icon="resources/images/letter.gif" />
+		</putList>
+	</definition>
+	<!-- ########## Menu Definitions end here ########## -->
+
+
+	<!-- ########## Screen Definitions start here ########## -->
+	<definition name="user.welcome.page" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.welcome" />
+		<put name="content" value="/jsp/user/UserWelcome.jsp" />
+		<put name="selectedMenuIndex" value="-1" />
+	</definition>
+
+	<definition name="user.change.password" extends="layout.user">
+		<put name="pageTitle" value="page.title.change.password" />
+		<put name="content" value="/jsp/common/ChangePassword.jsp" />
+		<put name="selectedMainMenuIndex" value="-1" />
+	</definition>
+
+	<definition name="user.reportCard.view" extends="layout.user">
+		<put name="pageTitle" value="page.title.admin.user.view" />
+		<put name="content" value="/jsp/user/CustomerReportCard.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+	</definition>
+	
+
+	<definition name="user.food.journal.view.all.meals" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.food.journal" />
+		<put name="content" value="/jsp/user/ViewAllMeals.jsp" />
+		<put name="selectedMenuIndex" value="1" />
+	</definition>
+
+	<definition name="user.food.journal.update.meal" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.food.journal" />
+		<put name="content" value="/jsp/user/UpdateMeal.jsp" />
+		<put name="selectedMenuIndex" value="1" />
+	</definition>
+
+	<definition name="user.food.journal.add" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.food.journal" />
+		<put name="content" value="/jsp/user/AddMeal.jsp" />
+		<put name="selectedMenuIndex" value="1" />
+	</definition>
+
+	<!-- Status And Measurement @ start -->
+	<definition name="user.statusAndMeasurements.list" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/NotReady.jsp" />
+		<put name="selectedMenuIndex" value="2" />
+	</definition>
+						
+	<definition name="user.statusAndMeasurements.view" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/user/ViewStatusAndMeasurement.jsp" />
+		<put name="selectedMenuIndex" value="2" />
+	</definition>
+
+	<definition name="user.autoStatusAndMeasurements.view" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/user/ViewAutoStatusAndMeasurement.jsp" />
+		<put name="selectedMenuIndex" value="2" />
+	</definition>
+	
+	<definition name="user.compareAutoStatusAndMeasurements.view" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/user/CompareAutoMeasurements.jsp" />
+		<put name="selectedMenuIndex" value="2" />
+	</definition>
+	<!-- Status And Measurement @ End -->
+
+	<!-- Admin mails -->
+	<definition name="user.mails.inbox" extends="layout.user">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/user/Inbox.jsp" />
+		<put name="selectedMenuIndex" value="5" />
+	</definition>
+	
+	<definition name="user.mails.sentItems" extends="layout.user">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/user/SentItems.jsp" />
+		<put name="selectedMenuIndex" value="5" />
+	</definition>
+	
+	<definition name="user.mails.compose" extends="layout.user">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/user/Compose.jsp" />
+		<put name="selectedMenuIndex" value="5" />
+	</definition>
+	
+	<definition name="user.mails.mailConversation" extends="layout.user">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/user/Conversation.jsp" />
+		<put name="selectedMenuIndex" value="5" />
+	</definition>
+	<!-- End of admin mails -->
+	
+
+	<!-- Suppliment Tracker @ Start -->
+	
+	<definition name="user.supplimentTracker.view" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/user/ViewSupplimentTracker.jsp" />
+		<put name="selectedMenuIndex" value="3" />
+	</definition>
+	
+	<!-- Suppliment Tracker @ End -->
+
+	<!-- Heart rate monitor starts -->
+	<definition name="user.heartRateMonitor.view" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.heartRateMonitor" />
+		<put name="content" value="/jsp/user/UserHeartRateMonitor.jsp" />
+		<put name="selectedMenuIndex" value="4" />
+	</definition>
+
+	<definition name="user.heartRateMonitor.comparison" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.heartRateMonitor" />
+		<put name="content" value="/jsp/user/UserHeartRateMonitorComparison.jsp" />
+		<put name="selectedMenuIndex" value="4" />
+	</definition>
+
+
+	<definition name="user.heartRateMonitor.add" extends="layout.user">
+		<put name="pageTitle" value="page.title.user.heartRateMonitor" />
+		<put name="content" value="/jsp/user/UserAddHeartRateMonitor.jsp" />
+		<put name="selectedMenuIndex" value="4" />
+	</definition>
+	<!-- Heart rate monitor ends -->
+	<!-- ########## Screen Definitions end here ########## -->
+
+</tiles-definitions>

@@ -1,0 +1,742 @@
+BODY 
+{
+	margin: 10px;
+	font-family: arial, helvetica, verdana;
+	font-size: 0.7em;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+.button
+{
+	font: Arial normal 10;
+}
+
+a #link
+{
+	color="0000CC";
+	display: inline;
+	font: Arial bold 11;
+ }
+
+.link
+{
+	font-family: arial,verdana;
+	font-size: 0.8em;
+	color: blue;
+	text-decoration: underline;
+	text-align: center;
+	vertical-align: top;
+ 	font-size: 12px;
+ 	text-decoration: none;
+	/*padding: 10;
+	margin: 10;*/
+}
+
+.red
+{
+	color: red;
+}
+
+.blue
+{
+	color: blue;
+}
+
+.blue-green
+{
+	color: #007777;
+}
+
+.green
+{
+	color: green;
+}
+
+.black
+{
+	color: black;
+}
+
+.fieldset
+{ 
+	margin: 6px, 6px, 8px, 6px ;
+}
+
+.fieldset legend
+{ 
+	font-family: arial,verdana;
+	font-size: 12px;
+	color: #024788;
+	font-weight: bold;
+}
+
+.form-border 
+{
+	border: 1px solid black;
+}
+
+.footer
+{
+	border-top: 1px solid #000000;
+	font-family: arial, helvetica, verdana bold;
+	font-size: 11;
+	color: #444444;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+.header-panel
+{
+	background-image: url('../../resources/images/header-bg.gif'); 
+	background-repeat: repeat-x;
+	background-color: #000000;
+}
+
+.header-text
+{
+	font-family: Arial, Verdana;
+	font-size: 13;
+	font-weight: normal;
+	color: yellow;
+	text-align: right;
+	vertical-align: bottom;
+	padding-right: 10px;
+	padding-bottom: 1px;
+	text-decoration: none;
+}
+
+.header-text-a
+{
+	font-family: Arial, Verdana;
+	font-size: 13;
+	font-weight: bold;
+	color: #FFFFFF;
+	float: right;
+	text-align: right;
+	padding-bottom: 10px;	
+	text-decoration: none;
+}
+
+.star
+{
+	color: #FF8C00;
+	font-family: arial;
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+.error-header
+{
+	background-color:#FF8C00;
+	color: white;
+	font-size: 13;
+	font-weight: bold;
+	padding: 2px, 6px, 2px, 6px;
+}
+.error
+{
+	color: #FF8C00;
+	font-size: 9pt;
+    font-weight: bold;
+	text-align: left;
+}
+
+.login-header
+{
+	padding-left: 6px;
+	background-color: #024788; 
+	color: #FFFFFF; 
+	font-family: Arial; 
+	font-size:13; 
+	font-weight:bold;
+}
+
+
+	/*======== classes specific to welcome page start here ========*/
+.welcome-panel
+{
+	border: 3px groove;
+}
+
+.welcome-panel-h1
+{
+	font-family: arial, helvetica, verdana bold;
+	font-size: 15;
+	font-weight: bold;
+	color: #000000;
+	background-color: inherit;
+	text-align: center;
+	margin: 5px;
+	padding: 5px;
+}
+
+.welcome-panel-h2
+{
+	font-family: Arial, helvetica, verdana bold;
+	font-size: 12;
+	color: #000000;
+	background-color: inherit;
+	text-align: left;
+	margin: 5px;
+	padding: 5px;
+}
+	/*======== classes specific to welcome page end here ========*/
+
+
+	/*======== classes specific to Mail/Messages page start here ========*/
+img.email-icon
+{
+	margin-left: 5px;
+	border: 1px solid #024788;
+	height: 20px;
+	cursor: hand;
+	vertical-align: middle;
+}
+
+.mail-display-panel
+{
+	border: 1px solid #024788;
+	font-family: arial, helvetica, verdana;
+	color: #000000;
+	background-color: #F4F3FF;
+	margin-top: 20px;
+}
+
+tr.inbox-header
+{
+	font-family: verdana, arial, helvetica;
+	font-size: 11;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #024788;
+	text-align: left;
+	margin: 2px;
+	padding: 2px;
+}
+
+tr.inbox-unread-message-row
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: left;	
+	margin: 2px;
+	padding: 2px;
+	border-bottom: 5px;
+}
+
+tr.inbox-message-row
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: normal;
+	color: #000000;
+	background-color: #E8F2FF;
+	text-align: left;	
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid #024788;		
+}
+
+tr.inbox-selected-unread-message-row
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFD5;
+	text-align: left;	
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid #024788;
+}
+
+tr.inbox-selected-message-row
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: normal;
+	color: #000000;
+	background-color: #FFFFD5;
+	text-align: left;	
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid #024788;
+}
+
+.mail-header
+{
+	background-color: #024788;
+	text-align: left;
+	margin: 5px;
+	padding-bottom: -2px;
+}
+.mail-header-item
+{
+	font-family: arial, helvetica, verdana bold;
+	font-size: 13;
+	font-weight: normal;
+	color: #FFFFFF;
+	background-color: #024788;
+	text-align: left;
+	padding-right: 10px;
+}
+.mail-header-item-selected
+{
+	font-family: arial, helvetica, verdana bold;
+	font-size: 14;
+	font-weight: bold;
+	text-decoration: none;
+	color: #FFFFFF;
+	background-color: #024788;
+	text-align: left;
+	padding-right: 10px;
+}
+.mail-display-area
+{
+	border: 1px outset;
+	font-family: arial, helvetica, verdana;
+	color: #000000;
+	background-color: #F4F3FF;
+}
+
+a.mail-tab
+{
+	color: #FFFFFF;
+	text-decoration: none;	
+}
+.message-body
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	color: #000000;
+	border: 1px solid #BFB8BF;
+	background-color: #FFFFFF;
+	padding: 8px 20px 8px 20px;
+	/*margin-left: 4px;*/
+}
+textarea.message-body-compose
+{ 
+	font-family: Arial;
+	font-size: 12;
+}
+
+.conversation-label
+{
+	font-family: arial, helvetica, verdana bold;
+	font-size: 12;
+	color: #000000;
+	background-color: inherit;
+	text-align: right;
+}
+
+.conversation-value
+{
+	color: #99001C;
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: bold;
+	background-color: inherit;
+	padding-left: 4px;
+	margin-left: 4px;
+}
+
+/*======== classes specific to Inbox page end here ========*/	
+
+/*======== classes specific to Search page start here ========*/
+.search-result-panel
+{
+	border: 1px solid #024788;
+	font-family: arial, helvetica, verdana;
+	color: #000000;
+	background-color: #F4F3FF;
+	margin-top: 20px;
+}
+
+td.search-result-header
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #024788;
+	text-align: center;
+	margin: 2px;
+	padding: 2px;	
+}
+
+td.search-result-text-data
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: normal;
+	color: #000000;
+	background-color: transparent;
+	text-align: left;	
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid #024788;
+}
+
+td.search-result-date-data
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: normal;
+	color: #000000;
+	background-color: transparent;
+	text-align: center;	
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid #024788;
+}
+
+td.search-result-currency-data
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: normal;
+	color: #000000;
+	background-color: transparent;
+	text-align: right;	
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid #024788;
+}
+
+	/*======== classes specific to Search page end here ========*/
+
+	/*======== classes specific to content-panel page start here ========*/
+.content-panel
+{
+	border-left: 1px solid #000000;
+	font-family: arial, helvetica, verdana;
+	color: #000000;
+	background-color: #DDE0EE;
+	vertical-align: top;
+}
+
+.content-panel-display-area
+{
+	border: 2px outset #FFFFFF;
+	font-family: arial, helvetica, verdana;
+	color: #000000;
+	background-color: #F4F3FF;
+	margin-top: 10px;
+}
+
+.content-panel-footer
+{
+	text-align: center;
+	background-color: inherit;
+}
+
+.content-panel-h1
+{
+	font-family: arial, helvetica, verdana bold;
+	font-size: 15;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #024788;
+/*	color: #000000;
+	background-color: #FFFFFF;*/
+	text-align: center;
+	margin: 5px;
+	padding: 5px;
+}
+	
+	
+.content-panel-h2
+{
+	font-family: arial, helvetica, verdana bold;
+	font-size: 13;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #024788;
+	text-align: left;
+	margin: 5px;
+	padding: 5px;
+}
+.content-panel-label
+{
+	font-family: arial, helvetica, verdana bold;
+	font-size: 12;
+	font-weight: bold;
+	color: #000000;
+	background-color: inherit;
+	text-align: right;
+	padding-right: 4px;
+	margin-right: 4px;
+	
+}
+
+.content-panel-sub-label
+{
+	font-family: verdana;
+	font-weight: normal;
+	font-size: 11;
+	color: inherit;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+.content-panel-data
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	color: #000000;
+	background-color: inherit;
+}
+
+.field-text-box
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	color: #000000;
+}
+
+.field-option
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	color: #000000;		
+}
+
+.customer-name-panel
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 13;
+	font-weight: bold;
+	color: #000000;	
+	border: 1px solid #FF7759;
+	background-color: #F4F3FF;
+	padding: 2px 0px 2px 4px;
+}
+
+.sub-heading
+{
+	font-family: Arial;
+	font-size: 13;
+	font-weight: bold;
+	color: #024788;
+	padding-left: 4px;
+	text-align: left;
+	border-left: 1px solid #DDE0EE;
+	border-top: 1px solid #DDE0EE;
+	border-right: 1px solid #003366;
+	border-bottom: 1px solid #003366;
+}
+	/*======== classes specific to content-panel page end here ========*/
+
+	/*======== classes specific to pager start here =========*/
+
+table.pager-panel
+{
+	border: 1px solid #0B198C;
+	background-color: #FFFFFF;
+}
+
+.pager-item a
+{
+	background-color: #D1D1E1;
+	color: #0B198C;
+	margin 0px;
+	padding: 3px 3px 3px 3px;
+	font-family: Verdana;
+	font-size: 11;
+	font-weight: normal;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.pager-item a:hover
+{
+	background-color: #D1D1E1;
+	color: red;
+	padding: 3px 3px 3px 3px;
+	font-family: Verdana;
+	font-size: 11;
+	font-weight: normal;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.pager-item-current
+{
+	background-color: #ECE9D8;
+	color: #000000;
+	padding: 3px 3px 3px 3px;
+	font-family: Verdana;
+	font-size: 11;
+	font-weight: bold;
+	text-decoration: none;
+	vertical-align: middle;
+}
+	/*======== classes specific to pager page end here ========*/
+	
+
+	/*======== classes specific to reminder display page starts here ========*/
+	
+tr.reminder-row
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	font-weight: normal;
+	color: #000000;
+	background-color: #E8F2FF;
+	text-align: left;	
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid #024788;		
+}
+
+tr.reminder-checks-row
+{
+	font-family: arial, helvetica, verdana;
+	font-size: 12;
+	color: #000000;
+	background-color: #FFEEEE;
+	text-align: left;	
+	margin: 2px;
+	padding: 2px;
+	border-bottom: 5px;
+}
+	/*======== classes specific to reminder display page ends here ========*/
+
+	
+	/*======== classes specific to Menu start here =========*/
+
+/*--- For Vertical menu ----*/
+.vertical-menu-container 
+{
+	height: 100%;
+	vertical-align: top;
+	background-color: #679ACD;
+}
+
+#vertical-menu-list
+{
+	font-family: Arial, Verdana;
+	font-size: 0.7em;
+	font-weight: bold;
+	display: block;
+	list-style-type: none;
+	margin: 3px;
+	padding: 0px;
+	white-space: normal;
+	vertical-align: top;
+}
+
+#vertical-menu-list li 
+{
+	height: 60px;
+	margin-bottom: 5px;
+	padding-bottom: 0px;
+	border: 1px outset #FFFFFF;
+	text-decoration: none;
+	cursor: hand;
+}
+
+ul#vertical-menu-list li#current 
+{
+	color: #FFFFFF;	
+	background-color: #024788;
+}
+
+#vertical-menu-list1 li#other
+{
+	color: #000000;
+}
+
+ul#vertical-menu-list a.current_a
+{
+	color: #FFFFFF;	
+	text-decoration: none;
+}
+
+ul#vertical-menu-list a.other_a
+{
+	color: #000000;
+	text-decoration: none;
+}
+
+ul#vertical-menu-list a.other_a:hover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+
+/*--- For Horizontal menu ----*/
+.horizontal-menu-container
+{
+	border-top: 0px solid #000000;
+	border-bottom: 1px solid #024788;
+	vertical-align: middle;
+	filter: progid:DXImageTransform.Microsoft.gradient
+		(startColorstr=#024788, endColorstr=#F7FAFD);
+	background-color: #679ACD;
+	height: 30;
+}
+
+#horizontal-menu-block 
+{
+	font-family: Verdana;
+	font-size: 13;
+	font-weight: bold;
+	margin:  2px, 0px, 2px, 0px;
+	vertical-align: top;
+}
+
+ul#horizontal-menu-list
+{
+	font-family: Verdana;
+	font-size: 13;
+	font-weight: bold;
+	padding:  0;
+	margin:  0;
+	text-align: left;
+}
+
+ul#horizontal-menu-list li
+{
+	display: inline;
+	padding: 1px 8px 1px 8px;
+	white-space: normal;
+	text-decoration: none;
+	cursor: hand;
+}
+ul#horizontal-menu-list li#current 
+{
+	color: #FFFFFF;
+	border: 1px outset;
+	background-color: #024788;
+}
+ul#horizontal-menu-list a.current_a
+{
+	color: #FFFFFF;	
+	text-decoration: none;
+}
+
+ul#horizontal-menu-list li#other
+{
+	color: #000000;
+}
+
+ul#horizontal-menu-list a.other_a
+{
+	color: #000000;
+	text-decoration: none;
+	cursor: hand;
+}
+
+ul#horizontal-menu-list a.other_a:hover
+{
+	border: 1px outset #FFFFFF;
+	padding: 0px 1px 0px 1px;
+	margin: 0px 0px 0px -4px;
+	*margin: 0px -2px 0px -2px;
+}
+	/*======== classes specific to Menu end here ===============*/
