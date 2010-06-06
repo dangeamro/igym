@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+"/WEB-INF/dtd/struts-config_1_2.dtd">
+
+<struts-config>
+	
+	<form-beans>
+		<form-bean name="statusAndMeasurementForm" 
+				type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementForm"/>
+				
+		<form-bean name="supplimentTrackerForm" 
+				type="com.designer.controller.supplimentTracker.SupplimentTrackerForm"/>
+				
+		
+		<form-bean name="customerForm"
+				type="com.designer.controller.customer.CustomerForm"/>
+
+		<form-bean name="searchCustomerForm"
+				type="com.designer.controller.customer.SearchCustomerForm"/>
+				
+		<form-bean name="goalForm" 
+				type="com.designer.controller.goal.GoalForm"/>
+
+		<form-bean name="mailForm"
+				type="com.designer.controller.message.MessageForm"/>
+
+		<form-bean name="changePasswordForm"
+				type="com.designer.controller.customer.ChangePasswordForm"/>
+
+	</form-beans>
+
+	<action-mappings>
+		
+		<!-- Meals start here -->
+		<action path="/admin/getAllMeals" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" parameter="method">
+			<forward name="success" path="admin.food.journal.view.all.meals"/>
+		</action>
+		
+		<action path="/admin/getUpload" forward="admin.user.getUpload"></action>
+		<action path="/admin/getFoodTemplate" forward="admin.user.foodTemplate"/>
+		
+		<action path="/admin/getAddTemplate" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" parameter="method">
+			<forward name="success" path="admin.user.addFoodTemplate"/>
+		</action>
+		
+		<action path="/admin/getUserFoodJournal" forward="admin.user.foodJournal"/>
+		
+		<action path="/admin/getAssignMeals" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" parameter="method">
+			<forward name="success" path="admin.food.journal.assignMeals"/>
+		</action>
+		
+		<action path="/admin/saveAssignMeal" 
+			type="com.designer.controller.foodJournal.FoodJournalAction"
+			name="foodJournalForm" parameter="method">
+			<forward name="success" path="/admin/getAllMeals.do?method=getMeals"/>
+		</action>
+				
+		<!-- Meals end here -->
+
+		<action path="/admin/getWelcomePage"  forward="admin.welcome.page" />
+		
+		<!-- User mails for admin	-->
+		<action path="/admin/getUserMails"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="admin.user.mails.inbox"/>
+		</action>
+		
+		<action path="/admin/deleteUserMails"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="/admin/getUserMails.do?method=getInbox" redirect="true" />
+		</action>
+		
+		<action path="/admin/deleteUserSentMails"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="/admin/getUserMailSentItems.do?method=getSentItems" redirect="true" />
+		</action>
+		
+		<action path="/admin/getUserMailSentItems"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="admin.user.mails.sentItems"/>
+		</action>
+		
+		<action path="/admin/getUserMailCompose" forward="admin.user.mails.compose"/>
+		
+		<action path="/admin/sendUserMail"
+			type="com.designer.controller.message.MessageAction"
+			name="mailForm" scope="request" 
+			input="/admin/getUserMailCompose.do"
+			parameter="method" validate="true">
+			<forward name="success" path="/admin/getUserMails.do?method=getInbox" redirect="true" />
+		</action>
+		
+		<action path="/admin/getUserMail"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="admin.user.mails.mailConversation" />
+		</action>
+		
+		<action path="/admin/markUserMailUnread"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="/admin/getUserMails.do?method=getInbox" redirect="true" />
+		</action>
+		<!-- End of user mails for admin	-->
+		
+		<!-- Admin mails	-->
+		<action path="/admin/getMails"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="admin.mails.inbox"/>
+		</action>
+		
+		<action path="/admin/deleteMails"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="/admin/getMails.do?method=getInbox" redirect="true" />
+		</action>
+		
+		<action path="/admin/deleteSentMails"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="/admin/getSentItems.do?method=getSentItems" redirect="true" />
+		</action>
+		
+		<action path="/admin/getSentItems"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="admin.mails.sentItems"/>
+		</action>
+		
+		<action path="/admin/getMailCompose" forward="admin.mails.compose"/>
+		
+		<action path="/admin/sendMail"
+			type="com.designer.controller.message.MessageAction"
+			name="mailForm" scope="request"
+			input="/admin/getMailCompose.do"
+			parameter="method" validate="true">
+			<forward name="success" path="/admin/getMails.do?method=getInbox" redirect="true" />
+		</action>
+		
+		<action path="/admin/getMail"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="admin.mails.mailConversation" />
+		</action>
+		
+		<action path="/admin/markUnread"
+			type="com.designer.controller.message.MessageAction"
+			parameter="method">
+			<forward name="success" path="/admin/getMails.do?method=getInbox" redirect="true" />
+		</action>
+		<!-- End of user mails for admin	-->
+		
+		<!--  Status And Measurement @ start -->
+		
+		<action path="/admin/getAutoStatusAndMeasurements"
+			type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementAction"
+			name="statusAndMeasurementForm" 
+			parameter="method">
+			<forward name="success" path="admin.inside.user.autoStatusAndMeasurements.view"/>
+		</action>
+		
+		<action path="/admin/compareAutoStatusAndMeasurements"
+			type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementAction"
+			name="statusAndMeasurementForm" 
+			parameter="method">
+			<forward name="success" path="admin.inside.user.compareStatusAndMeasurements.view"/>
+		</action>
+		
+		<action path="/admin/getStatusAndMeasurements"
+			type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementAction"
+			name="statusAndMeasurementForm" 
+			parameter="method">
+			<forward name="success" path="admin.inside.user.statusAndMeasurements.view"/>
+		</action>
+		
+		<action path="/admin/getAddStatusAndMeasurements" forward="admin.inside.user.statusAndMeasurements.add"/>
+		
+		<action path="/admin/addStatusAndMeasurements"
+			type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementAction"
+			name="statusAndMeasurementForm" 
+			parameter="method">
+			<forward name="success" path="/admin/getStatusAndMeasurements.do?method=getStatusAndMeasurement" redirect="true"/>
+		</action>
+		
+		<action path="/admin/deleteStatusAndMeasurements"
+			type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementAction"
+			name="statusAndMeasurementForm" 
+			parameter="method">
+			<forward name="success" path="/admin/getStatusAndMeasurements.do?method=getStatusAndMeasurement" redirect="true"/>
+		</action>
+		
+		<action path="/admin/uploadAutomated"
+			type="com.designer.controller.statusAndMeasurement.StatusAndMeasurementAction"
+			parameter="method">
+			<forward name="success" path="/admin/getUpload.do" redirect="true"/>
+		</action>
+		
+		<!--  Status And Measurement @ end -->
+		
+		<!--  Suppliment Tracker @ start -->
+		
+		<action path="/admin/getChangeDefaultSupplements" 
+			type="com.designer.controller.supplimentTracker.SupplimentTrackerAction"
+			name="supplimentTrackerForm"
+			parameter="method">
+			<forward name="success" path="admin.user.getChangeDefaultSupplements" redirect="true"/>
+		</action>
+		
+		<action path="/admin/changeDefaultSupplements"
+			type="com.designer.controller.supplimentTracker.SupplimentTrackerAction"
+			name="supplimentTrackerForm"
+			parameter="method">
+			<forward name="success" path="/admin/getChangeDefaultSupplements.do?method=getAddSupplimentTracker" redirect="true"/>
+		</action>
+		
+		 <action path="/admin/getSupplimentTracker"
+			type="com.designer.controller.supplimentTracker.SupplimentTrackerAction"
+			name="supplimentTrackerForm" 
+			parameter="method">
+			<forward name="success" path="admin.inside.user.supplimentTracker.view"></forward>
+		</action>
+					
+		<action path="/admin/getAddSupplimentTracker"
+			type="com.designer.controller.supplimentTracker.SupplimentTrackerAction"
+			name="supplimentTrackerForm" 
+			parameter="method">
+		 <forward name="success" path="admin.inside.user.supplimentTracker.add" />
+		 </action>
+		
+		<action path="/admin/addSupplimentTracker"
+			type="com.designer.controller.supplimentTracker.SupplimentTrackerAction"
+			name="supplimentTrackerForm" 
+			parameter="method">
+			<forward name="success" path="/admin/getSupplimentTracker.do?method=getSupplimentTracker" redirect="true"/>
+		</action>
+		
+		<action path="/admin/deleteSupplimentTracker"
+			type="com.designer.controller.supplimentTracker.SupplimentTrackerAction"
+			name="supplimentTrackerForm" 
+			parameter="method">
+			<forward name="success" path="/admin/getSupplimentTracker.do?method=getSupplimentTracker" redirect="true"/>
+		</action>
+		
+		<!--  Suppliment Tracker @ end -->
+		
+		<!-- Customer Starts -->
+		<action path="/admin/getChangePassword"
+			type="com.designer.controller.customer.CustomerAction"
+			name="changePasswordForm" validate="false" forward="admin.change.password"/>
+
+		<action path="/admin/changePassword"
+			type="com.designer.controller.customer.CustomerAction"
+			input="/admin/getChangePassword.do" parameter="method"
+			name="changePasswordForm" validate="true">
+			<forward name="success" path="/admin/getWelcomePage.do" redirect="true"/>
+			<forward name="failure" path="/admin/getChangePassword.do"/>
+		</action>
+		
+		<action path="/admin/getAddCustomer" 
+			type="com.designer.controller.customer.CustomerAction"
+			name="customerForm" validate="false" forward="admin.add.customer"/>
+		
+		<action path="/admin/addCustomer"
+			type="com.designer.controller.customer.CustomerAction"
+			name="customerForm" validate="true"
+			input="/admin/getAddCustomer.do" scope="request"
+			parameter="method">
+			<forward name="successForAdminUser" path="/admin/getSearchCustomer.do" redirect="true"/>
+			<forward name="successForCustomerUser" path="/admin/getCustomerReportCard.do?method=getReportCard" redirect="true"/>
+			<forward name="failure" path="/admin/getAddCustomer.do"/>
+		</action>
+
+		<action path="/admin/unlockCustomers"
+			type="com.designer.controller.customer.CustomerAction"
+			name="customerForm" validate="true" scope="request"
+			parameter="method">			
+			<forward name="success" path="admin.update.user" />
+		</action>
+
+		<action path="/admin/getUpdateCustomer"
+			type="com.designer.controller.customer.CustomerAction"
+			name="customerForm" scope="request" validate="false"
+			parameter="method">
+			<forward name="success" path="admin.update.user" />
+		</action>
+
+		<action path="/admin/updateCustomer"
+			type="com.designer.controller.customer.CustomerAction"
+			name="customerForm" validate="true" scope="request"
+			input="admin.update.user"	parameter="method">
+			<forward name="success" path="/admin/manageCustomers.do?method=listCustomers" redirect="true"/>
+			<forward name="failure" path="/admin/getUpdateCustomer?method=loadUserDetails" />
+		</action>
+
+		<action path="/admin/viewGoal"
+			type="com.designer.controller.goal.GoalAction"
+			name="goalForm" parameter="method">			
+			<forward name="success" path="admin.view.goal" />
+		</action>
+
+		<action path="/admin/getAddGoal" 
+			type="com.designer.controller.goal.GoalAction"
+			name="goalForm" forward="admin.add.goal"/>
+
+		<action path="/admin/addGoal"
+			type="com.designer.controller.goal.GoalAction"
+			name="goalForm" parameter="method" input="/admin/getAddGoal.do">
+			<forward name="success" path="admin.view.goal" />
+			<forward name="failure" path="/admin/getAddGoal.do" />
+		</action>
+
+		<action path="/admin/getUpdateGoal"
+			type="com.designer.controller.goal.GoalAction"
+			name="goalForm" parameter="method">
+			<forward name="success" path="admin.update.goal" />
+		</action>
+
+		<action path="/admin/updateGoal"
+			type="com.designer.controller.goal.GoalAction"
+			name="goalForm" parameter="method" input="/admin/getUpdateGoal">			
+			<forward name="success" path="admin.view.goal" />
+		</action>
+
+		<action path="/admin/getSearchCustomer"  forward="admin.search.customer" />
+		
+		<action path="/admin/searchCustomer"
+			type="com.designer.controller.customer.CustomerAction"
+			name="searchCustomerForm" parameter="method">
+			<forward name="success" path="admin.search.customer"/>
+		</action>
+			
+		
+		<action path="/admin/manageCustomers" 
+			type="com.designer.controller.customer.CustomerAction"
+			parameter="method">
+			<forward name="success" path="admin.manage.customers" />
+		</action>
+		
+		<action path="/admin/deleteCustomer" 
+			type="com.designer.controller.customer.CustomerAction"
+			parameter="method">
+			<forward name="success" path="/admin/manageCustomers.do?method=listCustomers" redirect="true"/>
+			<forward name="failure" path="/admin/manageCustomers.do?method=listCustomers"/>
+		</action>
+		
+		<action path="/admin/unlockCustomers" 
+			type="com.designer.controller.customer.CustomerAction"
+			parameter="method">
+			<forward name="success" path="/admin/manageCustomers.do?method=listCustomers" redirect="true"/>
+			<forward name="failure" path="/admin/manageCustomers.do?method=listCustomers"/>
+		</action>
+
+		<action path="/admin/getCustomerReportCard"
+			type="com.designer.controller.customer.ReportCardAction"
+			parameter="method">
+			<forward name="success" path="admin.user.reportCard" />
+			<forward name="failure" path="admin.user.reportCard" />			
+		</action>
+		
+		<!-- Customer Ends -->
+				
+		<!-- HeartRateMonitor starts -->
+		<action path="/admin/getHeartRateMonitor"
+			type="com.designer.controller.heartRateMonitor.HeartRateMonitorAction"
+			parameter="method">
+			<forward name="success" path="admin.user.heartRateMonitor"/>
+			<forward name="failure" path="admin.user.heartRateMonitor"/>			
+		</action>
+		
+		<action path="/admin/compareHeartRateMonitor"
+			type="com.designer.controller.heartRateMonitor.HeartRateMonitorAction"
+			parameter="method">
+			<forward name="success" path="admin.user.heartRateMonitor.Comparison"/>
+			<forward name="failure" path="admin.user.heartRateMonitor"/>			
+		</action>
+		<!-- HeartRateMonitor ends -->
+		
+		<action path="/admin/getReminderServices"
+			type="com.designer.controller.reminder.ReminderAction"
+			parameter="method">
+			<forward name="success" path="admin.reminder.modules"/>
+			<forward name="failure" path="admin.reminder.modules"/>
+		</action>
+		<action path="/admin/getModule"
+			type="com.designer.controller.reminder.ReminderAction"
+			parameter="method">
+			<forward name="success" path="admin.reminder.module"/>
+			<forward name="failure" path="admin.reminder.module"/>
+		</action>
+		<action path="/admin/updateReminders"
+			type="com.designer.controller.reminder.ReminderAction"
+			parameter="method">
+			<forward name="success" path="/admin/getReminderServices.do?method=getModules" redirect="true"/>
+			<forward name="failure" path="/admin/getReminderServices.do?method=getModules" redirect="true"/>
+		</action>
+		
+	
+		<action path="/admin/getUserManagement" forward="admin.user.management"/>
+	</action-mappings>
+</struts-config>

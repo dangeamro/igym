@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+"/WEB-INF/dtd/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<form-beans>
+		
+		<form-bean name="loginForm" type="com.designer.controller.user.LoginForm"/>
+		
+	</form-beans>
+	
+	<action-mappings>
+		<action path="/getLogin" 
+				name="loginForm" scope="request"
+				forward="/jsp/common/Login.jsp"/>
+		
+		<action path="/remindPassword" forward="/jsp/NotReady.jsp"/>
+		
+		<action path="/login"
+			type="com.designer.controller.user.LoginAction"
+			name="loginForm" input="/getLogin.do"
+			scope="request" parameter="method">
+			<forward name="successForAdmin" path="/admin/getWelcomePage.do" redirect="true"/>
+			<forward name="successForCustomer" path="/user/getWelcomePage.do" redirect="true"/>
+			<forward name="failure" path="/getLogin.do"/>
+		</action>
+
+		<!--  action path="/logout" 
+			type="com.designer.controller.user.LogoutAction"
+			parameter="method">
+			<forward name="success" path="/getLogin.do" redirect="true"/>
+		</action -->
+		
+		<action path="/getHelpPage" forward="/jsp/NotReady.jsp"/>
+					
+		
+	</action-mappings>
+
+	<controller contentType="text/html;charset=UTF-8" locale="true"
+		nocache="true"
+		processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
+
+	<message-resources parameter="MessageResources" null="false" />
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<!-- Path to XML definition files(s) -->
+		<set-property property="definitions-config"
+			value="/WEB-INF/tiles-config/tiles-config.xml,
+					/WEB-INF/tiles-config/tiles-config-admin.xml,
+					/WEB-INF/tiles-config/tiles-config-user.xml" />
+	</plug-in>
+
+
+</struts-config>

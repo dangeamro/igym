@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"/WEB-INF/dtd/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="layout.user" path="/jsp/common/UserLayout.jsp">
+		<put name="pageTitle" value="designer.title" />
+		<put name="header" value="/jsp/common/Header.jsp" />
+		<!-- put name="menu" value="/jsp/common/Menu.jsp"/-->
+		<put name="menu" value="user.menu.list" />
+		<put name="content" value="/jsp/common/Content.jsp" />
+		<put name="footer" value="/jsp/common/Footer.jsp" />
+		<put name="selectedMenuIndex" value="0" />
+	</definition>
+
+	<definition name="layout.admin.plain" path="/jsp/common/AdminLayoutPlain.jsp">
+		<put name="pageTitle" value="designer.title" />
+		<put name="header" value="/jsp/common/Header.jsp" />
+		<!-- put name="menu" value="/jsp/common/Menu.jsp"/-->
+		<put name="mainMenu" value="admin.main.menu.list" />
+		<!--put name="contextMenu" value="admin.context.menu.list" /-->		
+		<put name="content" value="/jsp/common/Content.jsp" />
+		<put name="footer" value="/jsp/common/Footer.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<!--put name="selectedContextMenuIndex" value="0" /-->		
+	</definition>
+
+
+	<definition name="layout.admin.contextMenu" path="/jsp/common/AdminLayoutContextMenu.jsp">
+		<put name="pageTitle" value="designer.title" />
+		<put name="header" value="/jsp/common/Header.jsp" />
+		<put name="mainMenu" value="admin.main.menu.list" />
+		<put name="contextMenu" value="admin.customer.context.menu.list" />
+		<put name="content" value="/jsp/common/Content.jsp" />
+		<put name="footer" value="/jsp/common/Footer.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+	</definition>
+
+
+</tiles-definitions>

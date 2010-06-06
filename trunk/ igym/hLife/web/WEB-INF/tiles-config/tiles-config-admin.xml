@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"/WEB-INF/dtd/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+	<!-- ########## Menu Definitions start here ########## -->
+	<definition name="admin.main.menu.list" path="/jsp/common/AdminMainMenu.jsp">
+		<putList name="mainMenuList">
+			<item value="admin.mainMenu.customers" 
+				link="/admin/getSearchCustomer.do"
+				icon="resources/images/customer.gif"/>
+			<item value="admin.mainMenu.calendarAndTasks" 
+				link="/admin/getReminderServices.do?method=getModules"
+				icon="resources/images/clock.gif"/>
+			<item value="admin.mainMenu.mailAndMessages" 
+				link="/admin/getMails.do?method=getInbox"
+				icon="resources/images/send-mail.jpg"/>
+			<item value="admin.mainMenu.maintenance"
+				link="/admin/getUpload.do"
+				icon="resources/images/maintenance.gif"/>
+		</putList>
+	</definition>
+
+	<definition name="admin.outside.customer.context.menu.list" path="/jsp/common/AdminContextMenu.jsp">
+		<putList name="contextMenuList">
+			<item value="admin.menu.customer.search" link="/admin/getSearchCustomer.do"
+				icon="resources/images/customers.gif" />
+			<item value="admin.menu.customer.manage" link="/admin/manageCustomers.do?method=listCustomers"
+				icon="resources/images/manage-customers.gif" />
+			<item value="admin.menu.customer.create" link="/admin/getAddCustomer.do"
+				icon="resources/images/addUser.gif" />
+		</putList>
+	</definition>
+
+	<definition name="admin.inside.customer.context.menu.list" path="/jsp/common/AdminContextMenu.jsp">
+		<putList name="contextMenuList">
+			<item value="menu.Item.report.card" link="/admin/getCustomerReportCard.do?method=getReportCard"
+				icon="resources/images/report-card.gif" />
+			<!-- Goals Will be heavily used in phase 2 >
+			<item value="menu.Item.goals" link="/admin/viewGoal.do?method=getGoal"
+				icon="resources/images/target.gif" / -->
+			<item value="menu.Item.food.journal" link="/admin/getAllMeals.do?method=getMeals"
+				icon="resources/images/notebook.gif" />
+			<item value="menu.Item.status.and.measurements" link="/admin/getAutoStatusAndMeasurements.do?method=getAutoStatusAndMeasurement"
+				icon="resources/images/measurements.gif" />
+			<item value="menu.Item.supplement.tracker" link="/admin/getSupplimentTracker.do?method=getSupplimentTracker"
+				icon="resources/images/beaker.gif" />
+			<item value="menu.Item.heart.rate.monitor" link="/admin/getHeartRateMonitor.do?method=getHeartRateMonitor"
+				icon="resources/images/chart.gif" />
+			<item value="menu.Item.mails" link="/admin/getUserMails.do?method=getInbox"
+				icon="resources/images/letter.gif" />
+		</putList>
+	</definition>
+
+	<definition name="admin.calendar.context.menu.list" path="/jsp/common/AdminContextMenu.jsp">
+		<putList name="contextMenuList">
+			<item value="admin.menu.reminder.services.manager" link="/admin/getReminderServices.do?method=getModules"
+				icon="resources/images/clock-mini.gif" />
+		</putList>
+	</definition>
+	
+	<definition name="admin.mainMenu.maintenance" path="/jsp/common/AdminContextMenu.jsp">
+		<putList name="contextMenuList">
+			<!--item value="admin.mainMenu.FoodTemplate" 
+				link="/admin/getFoodTemplate.do"
+				icon="resources/images/messages.gif"/-->
+			<item value="admin.mainMenu.uploadAutomatedMeasurements" 
+				link="/admin/getUpload.do"
+				icon="resources/images/messages.gif"/>
+			<item value="admin.mainMenu.manageSupplementTrackerDefaults"
+				link="/admin/getChangeDefaultSupplements.do?method=getAddSupplimentTracker"
+				icon="resources/images/beaker.gif" />
+		</putList>
+	</definition>
+	
+
+	<!-- ########## Menu Definitions end here ########## -->
+
+	<!-- ########## Screen Definitions start here ########## -->
+	<definition name="admin.welcome.page" extends="layout.admin.plain">
+		<put name="pageTitle" value="page.title.admin.welcome" />
+		<put name="content" value="/jsp/admin/AdminWelcome.jsp" />
+		<put name="selectedMainMenuIndex" value="-1" />
+	</definition>
+
+	<definition name="admin.change.password" extends="layout.admin.plain">
+		<put name="pageTitle" value="page.title.admin.welcome" />
+		<put name="content" value="/jsp/common/ChangePassword.jsp" />
+		<put name="selectedMainMenuIndex" value="-1" />
+	</definition>
+
+	<definition name="admin.password.changed" extends="layout.admin.plain">
+		<put name="pageTitle" value="page.title.change.password" />
+		<put name="content" value="/jsp/admin/AdminWelcome.jsp" />
+		<put name="selectedMainMenuIndex" value="-1" />
+	</definition>
+
+	<definition name="admin.search.customer" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.customer.search" />
+		<put name="content" value="/jsp/admin/AdminCustomerSearch.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.outside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="0" />
+	</definition>
+
+	<definition name="admin.manage.customers" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.customer.manage" />
+		<put name="content" value="/jsp/admin/ManageCustomer.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.outside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />
+	</definition>
+
+	<definition name="admin.add.customer" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.customer.add" />
+		<put name="content" value="/jsp/admin/AddCustomer.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.outside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="2" />
+	</definition>
+
+	<definition name="admin.update.user" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.customer.update" />
+		<put name="content" value="/jsp/admin/UpdateUser.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.outside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />
+	</definition>
+	
+	<definition name="admin.view.goal" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.goal.view" />
+		<put name="content" value="/jsp/admin/ViewGoal.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />
+	</definition>
+
+	<definition name="admin.add.goal" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.goal.add" />
+		<put name="content" value="/jsp/admin/AddGoal.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />
+	</definition>
+
+	<definition name="admin.update.goal" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.goal.update" />
+		<put name="content" value="/jsp/admin/UpdateGoal.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />
+	</definition>
+	
+	<definition name="admin.user.reportCard" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.view" />
+		<put name="content" value="/jsp/admin/AdminCustomerReportCard.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="0" />
+	</definition>
+	
+	<definition name="admin.user.foodJournal" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.food.Journal" />
+		<put name="content" value="/jsp/NotReady.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />
+	</definition>
+	<!-- Admin Food journal -->
+	<definition name="admin.food.journal.view.all.meals" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.food.Journal" />
+		<put name="content" value="/jsp/admin/AdminViewAllMeals.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />		
+	</definition>	
+
+	<definition name="admin.food.journal.assignMeals" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.food.Journal" />
+		<put name="content" value="/jsp/admin/AssignMeals.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />		
+	</definition>
+	
+	<!--definition name="admin.user.statusAndMeasurements" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/NotReady.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />
+	</definition -->
+	<!-- Status And Measurement @ Start -->
+	<definition name="admin.inside.user.statusAndMeasurements" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/NotReady.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="2" />
+	</definition>
+	
+	<definition name="admin.inside.user.statusAndMeasurements.view" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/admin/ViewStatusAndMeasurement.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="2" />
+	</definition>
+	
+	<definition name="admin.inside.user.autoStatusAndMeasurements.view" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/admin/ViewAutoStatusAndMeasurement.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="2" />
+	</definition>
+	
+	<definition name="admin.inside.user.compareStatusAndMeasurements.view" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/admin/CompareAutoMeasurements.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="2" />
+	</definition>
+	
+	<definition name="admin.inside.user.statusAndMeasurements.delete" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/admin/ViewStatusAndMeasurement.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="2" />
+	</definition>
+	
+	<definition name="admin.inside.user.statusAndMeasurements.add" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.statusAndMeasurements" />
+		<put name="content" value="/jsp/admin/AddStatusAndMeasurement.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="2" />
+	</definition>	
+	<!-- Status And Measurement @ End -->
+
+	<!-- Supplement Tracker @ Starts -->
+	<definition name="admin.inside.user.supplimentTracker.view" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.supplement.tracker" />
+		<put name="content" value="/jsp/admin/ViewSupplimentTracker.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="3" />
+	</definition>
+
+	<definition name="admin.inside.user.supplimentTracker.add" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.supplement.tracker" />
+		<put name="content" value="/jsp/admin/AddSupplimentTracker.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="3" />
+	</definition>
+	<!-- Supplement Tracker @ Ends -->
+	
+	<!-- HeartRateMonitor starts -->	
+	<definition name="admin.user.heartRateMonitor" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.heartRateMonitor" />
+		<put name="content" value="/jsp/admin/AdminHeartRateMonitor.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="4" />
+	</definition>
+	
+	<definition name="admin.user.heartRateMonitor.Comparison" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.heartRateMonitor" />
+		<put name="content" value="/jsp/admin/AdminHeartRateMonitorComparison.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="4" />
+	</definition>	
+	<!-- HeartRateMonitor ends -->		
+
+
+
+	<!-- User mail for admin-->
+	<definition name="admin.user.mails.inbox" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/UserInbox.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="5" />
+	</definition>
+	
+	<definition name="admin.user.mails.sentItems" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/UserSentItems.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="5" />
+	</definition>
+	
+	<definition name="admin.user.mails.compose" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/UserCompose.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="5" />
+	</definition>
+	
+	<definition name="admin.user.mails.mailConversation" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/UserConversation.jsp" />
+		<put name="selectedMainMenuIndex" value="0" />
+		<put name="contextMenu" value="admin.inside.customer.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="5" />
+	</definition>
+	<!-- End of user mail for admin-->
+	
+	<!-- Admin mails -->
+	<definition name="admin.mails.inbox" extends="layout.admin.plain">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/Inbox.jsp" />
+		<put name="selectedMainMenuIndex" value="2" />
+	</definition>
+	
+	<definition name="admin.mails.sentItems" extends="layout.admin.plain">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/SentItems.jsp" />
+		<put name="selectedMainMenuIndex" value="2" />
+	</definition>
+	
+	<definition name="admin.mails.compose" extends="layout.admin.plain">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/Compose.jsp" />
+		<put name="selectedMainMenuIndex" value="2" />
+	</definition>
+	
+	<definition name="admin.mails.mailConversation" extends="layout.admin.plain">
+		<put name="pageTitle" value="page.title.admin.user.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/Conversation.jsp" />
+		<put name="selectedMainMenuIndex" value="2" />
+	</definition>
+	<!-- End of admin mails -->
+	
+	<!-- Start of reminder services -->
+	<definition name="admin.reminder.modules" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.calendar" />
+		<put name="content" value="/jsp/admin/reminder/Modules.jsp" />
+		<put name="selectedMainMenuIndex" value="1" />
+		<put name="contextMenu" value="admin.calendar.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="0" />
+	</definition>
+	<definition name="admin.reminder.module" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.calendar" />
+		<put name="content" value="/jsp/admin/reminder/Module.jsp" />
+		<put name="selectedMainMenuIndex" value="1" />
+		<put name="contextMenu" value="admin.calendar.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="0" />
+	</definition>
+	<!-- End of reminder services -->
+
+	<definition name="admin.gym.schedule.view" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.calendar" />
+		<put name="content" value="/jsp/admin/NotReady.jsp" />
+		<put name="selectedMainMenuIndex" value="1" />
+		<put name="contextMenu" value="admin.calendar.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="0" />
+	</definition>
+
+	<definition name="admin.gym.schedule.add" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.calendar" />
+		<put name="content" value="/jsp/NotReady.jsp" />
+		<put name="selectedMainMenuIndex" value="1" />
+		<put name="contextMenu" value="admin.calendar.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="1" />
+	</definition>
+
+	<definition name="admin.gym.schedule.delete" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.calendar" />
+		<put name="content" value="/jsp/NotReady.jsp" />
+		<put name="selectedMainMenuIndex" value="1" />
+		<put name="contextMenu" value="admin.calendar.context.menu.list" />
+		<put name="selectedContextMenuIndex" value="2" />
+	</definition>
+
+	<definition name="admin.user.foodTemplate" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/ManageFoodTemplate.jsp" />
+		<put name="selectedMainMenuIndex" value="3" />
+		<put name="contextMenu" value="admin.mainMenu.maintenance" />
+		<put name="selectedContextMenuIndex" value="0" />
+	</definition>
+
+	<definition name="admin.user.addFoodTemplate" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/AddFoodTemplate.jsp" />
+		<put name="selectedMainMenuIndex" value="3" />
+		<put name="contextMenu" value="admin.mainMenu.maintenance" />
+		<put name="selectedContextMenuIndex" value="0" />
+	</definition>
+
+	<definition name="admin.user.getUpload" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/UploadAutomated.jsp" />
+		<put name="selectedMainMenuIndex" value="3" />
+		<put name="contextMenu" value="admin.mainMenu.maintenance" />
+		<put name="selectedContextMenuIndex" value="0" />
+	</definition>
+	
+	<definition name="admin.user.getChangeDefaultSupplements" extends="layout.admin.contextMenu">
+		<put name="pageTitle" value="page.title.admin.mailsAndMessages" />
+		<put name="content" value="/jsp/admin/changeDefaultSupplement.jsp" />
+		<put name="selectedMainMenuIndex" value="3" />
+		<put name="contextMenu" value="admin.mainMenu.maintenance" />
+		<put name="selectedContextMenuIndex" value="1" />
+	</definition>
+	
+	<!-- ########## Screen Definitions end here ########## -->
+
+</tiles-definitions>
